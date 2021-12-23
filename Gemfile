@@ -8,11 +8,15 @@ gem 'rails', '~> 6.1.4.1'
 # Basic
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'dotenv-rails'
+gem 'inky-rb', require: 'inky'
 gem 'pg', '~> 1.1'
+gem 'premailer-rails'
 gem 'puma', '~> 5.0'
 gem 'redis'
+gem 'sassc-rails'
 gem 'sinatra'
 gem 'sidekiq'
+gem 'sprockets'
 
 # Auth
 gem 'devise_token_auth', '~> 1.2.0'
