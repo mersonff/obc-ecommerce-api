@@ -72,6 +72,9 @@ GEM
     crass (1.0.6)
     css_parser (1.11.0)
       addressable
+    debase (0.2.4.1)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.13)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -194,6 +197,8 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
+    ruby-debug-ide (0.7.3)
+      rake (>= 0.8.1)
     ruby2_keywords (0.0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -239,6 +244,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
+  debase (~> 0.2.4.1)
   devise_token_auth (~> 1.2.0)
   dotenv-rails
   factory_bot_rails
@@ -252,6 +258,7 @@ DEPENDENCIES
   rails (~> 6.1.4.1)
   redis
   rspec-rails
+  ruby-debug-ide (~> 0.7.3)
   sassc-rails
   shoulda-matchers
   sidekiq

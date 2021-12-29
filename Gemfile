@@ -28,6 +28,8 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'ruby-debug-ide', '~> 0.7.3'
+  gem 'debase', '~> 0.2.4.1'
 end
 
 group :development do
