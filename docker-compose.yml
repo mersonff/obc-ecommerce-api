@@ -40,7 +40,6 @@ services:
     build:
       context: .
     depends_on:
-      - app
       - database
       - redis
     volumes:
@@ -48,9 +47,8 @@ services:
     command: bundle exec sidekiq
     env_file:
       - .env
-    environment:
-      RAILS_ENV: development
     entrypoint: ./entrypoints/sidekiq-entrypoint.sh
 
 volumes:
   db_data:
+  app:

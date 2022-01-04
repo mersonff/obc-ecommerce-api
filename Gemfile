@@ -15,8 +15,6 @@ gem 'puma', '~> 5.0'
 gem 'rack-cors', '~> 1.1.1'
 gem 'redis'
 gem 'sassc-rails'
-gem 'sinatra'
-gem 'sidekiq'
 gem 'sprockets'
 
 # Auth
