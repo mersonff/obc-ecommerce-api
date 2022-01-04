@@ -17,6 +17,9 @@ gem 'redis'
 gem 'sassc-rails'
 gem 'sprockets'
 
+# Rendering
+gem 'jbuilder', '~> 2.10.1'
+
 # Auth
 gem 'devise_token_auth', '~> 1.2.0'
 
