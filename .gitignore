@@ -26,8 +26,3 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .idea
-.env
-/node_modules/
-/package.json
-/yarn.lock
-/yarn-error.log

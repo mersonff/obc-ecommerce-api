@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 DeviseTokenAuth.setup do |config|
-  config.require_client_password_reset_token = true
-
   # By default the authorization headers will change after each request. The
   # client is responsible for keeping track of the changing tokens. Change
   # this to false to prevent the Authorization header from changing after
@@ -11,7 +9,7 @@ DeviseTokenAuth.setup do |config|
 
   # By default, users will need to re-authenticate after 2 weeks. This setting
   # determines how long tokens will remain valid after they are issued.
-  config.token_lifespan = 1.week
+  config.token_lifespan = 1.weeks
 
   # Limiting the token_cost to just 4 in testing will increase the performance of
   # your test suite dramatically. The possible cost value is within range from 4
