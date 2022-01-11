@@ -18,4 +18,5 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.filter_rails_from_backtrace!
+  config.alias_it_behaves_like_to :it_has_behavior_of, 'has behavior of'
 end
