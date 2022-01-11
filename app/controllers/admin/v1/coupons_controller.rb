@@ -3,7 +3,8 @@ module Admin::V1
     before_action :load_coupon, only: [:update, :destroy]
 
     def index
-      @coupons = Coupon.all
+      @loading_service = Admin::ModelLoadingService.new(Coupon.all, searchable_params)
+      @loading_service.call
     end
 
     def create
@@ -32,6 +33,10 @@ module Admin::V1
     def coupon_params
       return {} unless params.has_key?(:coupon)
       params.require(:coupon).permit(:id, :name, :code, :status, :discount_value, :max_use, :due_date)
+    end
+
+    def searchable_params
+      params.permit({ search: :name }, { order: {} }, :page, :length)
     end
 
     def save_coupon!
