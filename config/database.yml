@@ -1,7 +1,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['DATABASE_NAME'] %>
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   port: <%= ENV['DATABASE_PORT'] || '5432' %>
@@ -10,9 +9,11 @@ default: &default
 
 development:
   <<: *default
+  database: ecommerce-api-development
 
 test:
   <<: *default
+  database: ecommerce-api-test
 
 production:
   <<: *default

@@ -36,19 +36,6 @@ services:
     image: redis
     command: redis-server
 
-  sidekiq:
-    build:
-      context: .
-    depends_on:
-      - database
-      - redis
-    volumes:
-      - .:/app
-    command: bundle exec sidekiq
-    env_file:
-      - .env
-    entrypoint: ./entrypoints/sidekiq-entrypoint.sh
-
 volumes:
   db_data:
   app:
