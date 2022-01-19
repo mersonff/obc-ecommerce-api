@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       resources :system_requirements
       resources :coupons
       resources :users
+      resources :products
+      resources :games, only: [], shallow: true do
+        resources :licenses
+      end
     end
   end
 
