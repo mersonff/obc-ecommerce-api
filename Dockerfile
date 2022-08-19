@@ -1,5 +1,5 @@
-FROM ruby:3.0.0
-ENV BUNDLER_VERSION='2.2.24'
+FROM ruby:3.0.3
+ENV BUNDLER_VERSION='2.3.18'
 
 RUN apt-get update -qq && apt-get install -y \
         curl \
@@ -14,7 +14,7 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 
-RUN gem install bundler -v '2.2.24'
+RUN gem install bundler -v '2.3.18'
 
 RUN bundle config build.nokogiri --use-system-libraries
 
