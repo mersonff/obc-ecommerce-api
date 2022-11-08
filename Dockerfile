@@ -1,7 +1,7 @@
 FROM ruby:3.0.3
 ENV BUNDLER_VERSION='2.3.18'
 
-RUN apt-get update -qq && apt-get install -y \
+RUN apt-get update -qq && apt-get install -y vim\
         curl \
         build-essential \
         libpq-dev &&\

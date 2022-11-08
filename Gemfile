@@ -4,10 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 gem 'bootsnap', '>= 1.4.4', require: false
+gem "cpf_cnpj"
 gem 'devise_token_auth', '~> 1.2.0'
 gem 'dotenv-rails', '~> 2.7.6'
 gem 'inky-rb', require: 'inky'
 gem 'jbuilder', '~> 2.11.5'
+gem 'httparty', '~> 0.18.1'
 gem 'pg', '~> 1.4.1'
 gem 'premailer-rails', '~> 1.11.1'
 gem 'puma', '~> 5.6.4'
@@ -15,6 +17,7 @@ gem 'rack-cors', '~> 1.1.1'
 gem 'rails', '~> 6.1.6'
 gem 'redis', '~> 4.7.0'
 gem 'sassc-rails', '~> 2.1.2'
+gem "sidekiq", '~> 6.1.3'
 gem 'sprockets', '~> 4.1.1'
 
 group :development, :test do
