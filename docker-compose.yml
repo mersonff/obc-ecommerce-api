@@ -36,6 +36,21 @@ services:
     image: redis
     command: redis-server
 
+  sidekiq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - app
+      - database
+      - redis
+    volumes:
+      - .:/app
+    env_file: .env
+    environment:
+      RAILS_ENV: development
+    entrypoint: ./entrypoints/sidekiq-entrypoint.sh
+
 volumes:
   db_data:
   app:
