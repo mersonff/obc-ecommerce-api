@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   app:
+    container_name: e-commerce-api
     build:
       context: .
       dockerfile: Dockerfile

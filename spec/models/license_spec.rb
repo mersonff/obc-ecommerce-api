@@ -12,6 +12,13 @@ RSpec.describe License, type: :model do
   it { is_expected.to validate_presence_of(:status)}
   it { is_expected.to define_enum_for(:status).with_values({ available: 1, in_use: 2, inactive: 3})}
 
+  it { is_expected.to belong_to(:line_item).optional }
+
   it_has_behavior_of "paginatable concern", :license
   it_behaves_like "like searchable concern", :license, :key
+
+  it "must have a :line_item if it's :in_use" do
+    subject.status = 'in_use'
+    is_expected.to validate_presence_of(:line_item)
+  end
 end

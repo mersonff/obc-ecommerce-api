@@ -64,5 +64,31 @@ RSpec.describe Order, type: :model do
       subject.validate
       expect(subject.errors).to have_key(:address)
     end
+
+    it "schedules a job for Juno charge creation after creation" do
+      order = build(:order)
+      order_params = { card_hash: order.card_hash, document: order.document, address: order.address.attributes }
+      expect do
+        order.save!
+      end.to have_enqueued_job(Juno::ChargeCreationJob).with(order, order_params)
+    end
+
+    it "call :line_item #ship! when receives :payment_accepted status" do
+      order = create(:order)
+      line_item = create(:line_item, order: order)
+      allow(order).to receive(:line_items).and_return([line_item])
+      expect(line_item).to receive(:ship!)
+      order.update!(status: :payment_accepted)
+    end
+
+    it "does not call :line_item #ship! when receives any other update" do
+      order = create(:order, status: :payment_accepted)
+      line_item = create(:line_item, order: order)
+      allow(order).to receive(:line_items).and_return([line_item])
+      expect(line_item).to_not receive(:ship!)
+      order.update!(subtotal: 30)
+    end
+
+    it_behaves_like "paginatable concern", :order
   end
 end

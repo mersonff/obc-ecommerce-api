@@ -18,6 +18,7 @@ gem 'rails', '~> 6.1.6'
 gem 'redis', '~> 4.7.0'
 gem 'sassc-rails', '~> 2.1.2'
 gem "sidekiq", '~> 6.1.3'
+gem "sidekiq-scheduler"
 gem 'sprockets', '~> 4.1.1'
 
 group :development, :test do

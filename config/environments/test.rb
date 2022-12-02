@@ -56,6 +56,7 @@ Rails.application.configure do
   # config.i18n.raise_on_missing_translations = true
 
   config.active_job.queue_adapter = :test
+  Rails.application.routes.default_url_options[:host] = "http://localhost:3000"
 
   JUNO_AUTH_URL = "https://sandbox.boletobancario.com"
   JUNO_RESOURCE_URL = "https://sandbox.boletobancario.com/api-integration"
