@@ -1,11 +1,15 @@
 require 'sidekiq/web'
+require 'sidekiq-scheduler/web'
 
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq'
+  require_relative '../lib/middlewares/static_token_auth'
+
+  Sidekiq::Web.use StaticTokenAuth
+  mount Sidekiq::Web => '/sidekiq/:token'
 
   mount_devise_token_auth_for 'User', at: 'auth/v1/user'
 
-  namespace :admin do
+  namespace :admin, defaults: { format: :json } do
     namespace :v1 do
       get "home" => "home#index"
       resources :categories
@@ -16,10 +20,16 @@ Rails.application.routes.draw do
       resources :games, only: [], shallow: true do
         resources :licenses
       end
+      resources :orders, only: [:index, :show]
+      namespace :dashboard do
+        resources :summaries, only: :index
+        resources :top_five_products, only: :index
+        resources :sales_ranges, only: :index
+      end
     end
   end
 
-  namespace :storefront do
+  namespace :storefront, defaults: { format: :json } do
     namespace :v1 do
       get "home" => "home#index"
       resources :products, only: [:index, :show]
@@ -27,6 +37,14 @@ Rails.application.routes.draw do
       resources :checkouts, only: :create
       post "/coupons/:coupon_code/validations", to: "coupon_validations#create"
       resources :wish_items, only: [:index, :create, :destroy]
+      resources :orders, only: [:index, :show]
+      resources :games, only: :index
+    end
+  end
+
+  namespace :juno do
+    namespace :v1 do
+      resources :payment_confirmations, only: :create
     end
   end
 end
